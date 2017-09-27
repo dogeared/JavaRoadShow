@@ -1,10 +1,10 @@
 package io.jsonwebtoken.jjwtfun.controller;
 
+import io.jsonwebtoken.CompressionCodecs;
 import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import io.jsonwebtoken.impl.compression.CompressionCodecs;
 import io.jsonwebtoken.jjwtfun.model.JwtResponse;
 import io.jsonwebtoken.jjwtfun.service.SecretService;
 import org.springframework.beans.factory.annotation.Autowired;
