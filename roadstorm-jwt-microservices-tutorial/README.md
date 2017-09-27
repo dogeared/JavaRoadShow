@@ -225,6 +225,13 @@ Follow these steps to use the messaging mode of the sample app:
     An exhaustive discussion of Kafka is outside the scope of this tutorial.
     However, if you follow the first two steps of the [quickstart](http://kafka.apache.org/documentation.html#quickstart), you'll have a local environment that's ready for this tutorial to work with.
     
+    **TL;DR:**
+    
+    ```
+    $KAFKA_PATH/bin/zookeeper-server-start.sh $KAFKA_PATH/config/zookeeper.properties
+    $KAFKA_PATH/bin/kafka-server-start.sh $KAFKA_PATH/config/server.properties
+    ```
+    
 2. Configure the tutorial
 
     This is the `application.properties` file of this tutorial:
