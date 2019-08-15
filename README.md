@@ -1,11 +1,9 @@
-## Stormpath Java RoadStorm Tour Code
+## Java RoadShow Tour Code
 
-Check out the [Java RoadStorm Tour](http://roadstorm.stormpath.com) landing page for tour dates and information.
+The code included in this repo is the tutorial code used in talks on the Java RoadShow Tour. There are two tutorials:
 
-The code included in this repo is the tutorial code used in talks on the Java RoadStorm Tour. There are two tutorials:
-
-* [JJWT CSRF Tutorial](roadstorm-jwt-csrf-tutorial) - This shows how replacing the default CSRF handler for Spring Security with a custom handler that uses JWTs can enhance CSRF protection.
-* [JJWT Microservices Tutorial](roadstorm-jwt-microservices-tutorial) - This is a demonstration of establishing trust between microservices using JWTs. It has both an HTTP mode and a messaging mode using Kafka.
+* [JJWT CSRF Tutorial](roadshow-jwt-csrf-tutorial) - This shows how replacing the default CSRF handler for Spring Security with a custom handler that uses JWTs can enhance CSRF protection.
+* [JJWT Microservices Tutorial](roadshow-jwt-microservices-tutorial) - This is a demonstration of establishing trust between microservices using JWTs. It has both an HTTP mode and a messaging mode using Kafka.
 
 ## Resources
 
