@@ -6,7 +6,6 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,8 +19,11 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 @RestController
 public class StaticJWTController extends BaseController {
 
-    @Autowired
-    SecretService secretService;
+    private SecretService secretService;
+
+    public StaticJWTController(SecretService secretService) {
+        this.secretService = secretService;
+    }
 
     @RequestMapping(value = "/static-builder", method = GET)
     public JwtResponse fixedBuilder() throws UnsupportedEncodingException {

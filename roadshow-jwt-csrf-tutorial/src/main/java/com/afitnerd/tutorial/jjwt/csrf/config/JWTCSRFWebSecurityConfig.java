@@ -25,11 +25,13 @@ import java.util.Arrays;
 @ConditionalOnProperty(name = {"jwt.csrf.token.repository.disabled"}, havingValue = "false", matchIfMissing = true)
 public class JWTCSRFWebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Autowired
-    CsrfTokenRepository jwtCsrfTokenRepository;
+    private CsrfTokenRepository jwtCsrfTokenRepository;
+    private SecretService secretService;
 
-    @Autowired
-    SecretService secretService;
+    public JWTCSRFWebSecurityConfig(CsrfTokenRepository jwtCsrfTokenRepository, SecretService secretService) {
+        this.jwtCsrfTokenRepository = jwtCsrfTokenRepository;
+        this.secretService = secretService;
+    }
 
     // ordered so we can use binary search below
     private String[] ignoreCsrfAntMatchers = {
@@ -55,7 +57,9 @@ public class JWTCSRFWebSecurityConfig extends WebSecurityConfigurerAdapter {
     private class JwtCsrfValidatorFilter extends OncePerRequestFilter {
 
         @Override
-        protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+        protected void doFilterInternal(
+            HttpServletRequest request, HttpServletResponse response, FilterChain filterChain
+        ) throws ServletException, IOException {
             // NOTE: A real implementation should have a nonce cache so the token cannot be reused
 
             CsrfToken token = (CsrfToken) request.getAttribute("_csrf");

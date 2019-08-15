@@ -1,13 +1,12 @@
 package com.afitnerd.tutorial.jjwt.csrf.controller;
 
+import com.afitnerd.tutorial.jjwt.csrf.model.JwtResponse;
 import com.afitnerd.tutorial.jjwt.csrf.service.SecretService;
 import io.jsonwebtoken.CompressionCodecs;
 import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import com.afitnerd.tutorial.jjwt.csrf.model.JwtResponse;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,8 +21,11 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 @RestController
 public class DynamicJWTController extends BaseController {
 
-    @Autowired
-    SecretService secretService;
+    private SecretService secretService;
+
+    public DynamicJWTController(SecretService secretService) {
+        this.secretService = secretService;
+    }
 
     @RequestMapping(value = "/dynamic-builder-general", method = POST)
     public JwtResponse dynamicBuilderGeneric(@RequestBody Map<String, Object> claims) throws UnsupportedEncodingException {

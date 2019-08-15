@@ -14,8 +14,11 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 @RestController
 public class SecretsController extends BaseController {
 
-    @Autowired
-    SecretService secretService;
+    private SecretService secretService;
+
+    public SecretsController(SecretService secretService) {
+        this.secretService = secretService;
+    }
 
     @RequestMapping(value = "/get-secrets", method = GET)
     public Map<String, String> getSecrets() {
