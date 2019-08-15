@@ -1,5 +1,5 @@
 <configuration>
     <include resource="org/springframework/boot/logging/logback/base.xml"/>
-    <logger name="org.springframework" level="INFO"/>
+    <logger name="org.springframework.security.web.csrf" level="DEBUG"/>
     <logger name="com.afitnerd" level="INFO"/>
 </configuration>
