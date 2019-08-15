@@ -14,6 +14,8 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
+import java.time.Duration;
+import java.time.temporal.TemporalUnit;
 import java.util.Collections;
 import java.util.Properties;
 
@@ -58,7 +60,7 @@ public class SpringBootKafkaConsumer {
         consumer.subscribe(Collections.singletonList(topic));
 
         while (true) {
-            ConsumerRecords<String, String> records = consumer.poll(1000);
+            ConsumerRecords<String, String> records = consumer.poll(Duration.ofMillis(1000));
             for (ConsumerRecord<String, String> record : records) {
                 log.info("record offset: {}, record value: {}", record.offset(), record.value());
                 AccountResponse accountResponse = null;
