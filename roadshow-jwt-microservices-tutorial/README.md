@@ -86,7 +86,7 @@ Let's first try to have one microservice communicate with the other *without* es
     
     {
         "exceptionType": "io.jsonwebtoken.JwtException",
-        "message": "No public key registered for kid: 97631b9a-2f34-4ac4-8c1c-d7e72fda110f. JWT claims: {iss=Stormpath, sub=msilverman, name=Micah Silverman, hasMotorcycle=true, iat=1466796822, exp=4622470422}",
+        "message": "No public key registered for kid: 97631b9a-2f34-4ac4-8c1c-d7e72fda110f. JWT claims: {iss=Okta, sub=msilverman, name=Micah Silverman, hasMotorcycle=true, iat=1466796822, exp=4622470422}",
         "status": "ERROR"
     }
     
@@ -140,7 +140,7 @@ Now, we can re-run our `/test-parse` endpoint using the same JWT from before:
                 "exp": 4622470422,
                 "hasMotorcycle": true,
                 "iat": 1466796822,
-                "iss": "Stormpath",
+                "iss": "Okta",
                 "name": "Micah Silverman",
                 "sub": "msilverman"
             },

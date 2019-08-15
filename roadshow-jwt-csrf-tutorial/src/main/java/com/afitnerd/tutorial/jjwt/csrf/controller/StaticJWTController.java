@@ -26,12 +26,12 @@ public class StaticJWTController extends BaseController {
     @GetMapping("/static-builder")
     public JwtResponse fixedBuilder() throws UnsupportedEncodingException {
         String jws = Jwts.builder()
-            .setIssuer("Stormpath")
+            .setIssuer("Okta")
             .setSubject("msilverman")
             .claim("name", "Micah Silverman")
             .claim("scope", "admins")
-            .setIssuedAt(Date.from(Instant.ofEpochSecond(1466796822L)))   // Fri Jun 24 2016 15:33:42 GMT-0400 (EDT)
-            .setExpiration(Date.from(Instant.ofEpochSecond(4622470422L))) // Sat Jun 24 2116 15:33:42 GMT-0400 (EDT)
+            .setIssuedAt(Date.from(Instant.ofEpochSecond(1561393128L)))   // Mon Jun 24 2019
+            .setExpiration(Date.from(Instant.ofEpochSecond(4717066728L))) // Sat Jun 24 2119
             .signWith(
                 SignatureAlgorithm.HS256,
                 secretService.getHS256SecretBytes()
@@ -54,7 +54,7 @@ public class StaticJWTController extends BaseController {
     @GetMapping("/parser-enforce")
     public JwtResponse parserEnforce(@RequestParam String jwt) throws UnsupportedEncodingException {
         Jws<Claims> jws = Jwts.parser()
-            .requireIssuer("Stormpath")
+            .requireIssuer("Okta")
             .require("hasMotorcycle", true)
             .setSigningKeyResolver(secretService.getSigningKeyResolver())
             .parseClaimsJws(jwt);

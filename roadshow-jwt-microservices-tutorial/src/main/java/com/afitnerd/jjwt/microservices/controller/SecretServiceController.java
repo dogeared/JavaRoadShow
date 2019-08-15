@@ -43,7 +43,7 @@ public class SecretServiceController extends BaseController {
     public JWTResponse testBuild() {
         String jws = Jwts.builder()
             .setHeaderParam("kid", secretService.getMyPublicCreds().getKid())
-            .setIssuer("Stormpath")
+            .setIssuer("Okta")
             .setSubject("msilverman")
             .claim("name", "Micah Silverman")
             .claim("hasMotorcycle", true)
