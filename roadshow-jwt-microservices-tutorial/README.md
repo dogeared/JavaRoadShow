@@ -172,7 +172,7 @@ The `MicroServiceController` exposes two endpoints to manage these interactions:
  
 Let's see this in action. Note: this assumes that you've registered the public key from the first microservice with the second microservice.
 
-`http POST localhost:8080/account-request username=anna`
+`http POST localhost:8080/account-request userName=anna`
 
     HTTP/1.1 200 OK
     Content-Type: application/json;charset=UTF-8

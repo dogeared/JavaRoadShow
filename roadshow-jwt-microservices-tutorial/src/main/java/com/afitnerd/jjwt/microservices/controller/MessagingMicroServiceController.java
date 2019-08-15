@@ -1,6 +1,7 @@
 package com.afitnerd.jjwt.microservices.controller;
 
 import com.afitnerd.jjwt.microservices.model.JWTResponse;
+import com.afitnerd.jjwt.microservices.service.SecretService;
 import com.afitnerd.jjwt.microservices.service.SpringBootKafkaProducer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,8 +16,16 @@ import java.util.concurrent.ExecutionException;
 @RestController
 public class MessagingMicroServiceController extends BaseController {
 
-    @Autowired(required = false)
-    SpringBootKafkaProducer springBootKafkaProducer;
+    private SpringBootKafkaProducer springBootKafkaProducer;
+
+    public MessagingMicroServiceController(SecretService secretService) {
+        super(secretService);
+    }
+
+    @Autowired(required=false)
+    public void setSpringBootKafkaProducer(SpringBootKafkaProducer springBootKafkaProducer) {
+        this.springBootKafkaProducer = springBootKafkaProducer;
+    }
 
     private static final Logger log = LoggerFactory.getLogger(MessagingMicroServiceController.class);
 

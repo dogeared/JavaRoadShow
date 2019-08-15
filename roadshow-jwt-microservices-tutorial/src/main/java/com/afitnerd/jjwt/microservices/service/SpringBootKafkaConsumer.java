@@ -8,7 +8,6 @@ import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Service;
@@ -28,8 +27,11 @@ public class SpringBootKafkaConsumer {
     @Value("${topic}")
     private String topic;
 
-    @Autowired
-    AccountService accountService;
+    private AccountService accountService;
+
+    public SpringBootKafkaConsumer(AccountService accountService) {
+        this.accountService = accountService;
+    }
 
     private Properties kafkaProps;
     private Consumer<String, String> consumer;

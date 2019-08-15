@@ -1,7 +1,6 @@
 package com.afitnerd.tutorial.jjwt.csrf.controller;
 
 import com.afitnerd.tutorial.jjwt.csrf.service.SecretService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

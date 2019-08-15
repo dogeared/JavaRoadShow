@@ -1,9 +1,8 @@
 package com.afitnerd.tutorial.jjwt.csrf.config;
 
+import com.afitnerd.tutorial.jjwt.csrf.service.SecretService;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
-import com.afitnerd.tutorial.jjwt.csrf.service.SecretService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;

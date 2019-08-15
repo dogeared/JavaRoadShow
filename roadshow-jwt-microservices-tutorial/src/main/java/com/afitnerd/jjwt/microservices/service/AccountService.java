@@ -1,9 +1,9 @@
 package com.afitnerd.jjwt.microservices.service;
 
-import com.afitnerd.jjwt.microservices.model.AccountResponse;
-import com.afitnerd.jjwt.microservices.model.BaseResponse;
 import com.afitnerd.jjwt.microservices.exception.UnauthorizedException;
 import com.afitnerd.jjwt.microservices.model.Account;
+import com.afitnerd.jjwt.microservices.model.AccountResponse;
+import com.afitnerd.jjwt.microservices.model.BaseResponse;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
@@ -11,7 +11,6 @@ import io.jsonwebtoken.MissingClaimException;
 import io.jsonwebtoken.lang.Assert;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
@@ -22,8 +21,11 @@ import java.util.Map;
 @Service
 public class AccountService {
 
-    @Autowired
-    SecretService secretService;
+    private SecretService secretService;
+
+    public AccountService(SecretService secretService) {
+        this.secretService = secretService;
+    }
 
     public static final String USERNAME_CLAIM = "userName";
 

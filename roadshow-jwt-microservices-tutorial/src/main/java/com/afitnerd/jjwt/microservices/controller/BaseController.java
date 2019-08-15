@@ -10,7 +10,6 @@ import io.jsonwebtoken.MalformedJwtException;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.SignatureException;
 import io.jsonwebtoken.lang.Assert;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -20,8 +19,11 @@ import java.util.Map;
 
 public class BaseController {
 
-    @Autowired
     SecretService secretService;
+
+    public BaseController(SecretService secretService) {
+        this.secretService = secretService;
+    }
 
     protected String createJwt(Map<String, Object> claims) {
         Assert.notNull(
