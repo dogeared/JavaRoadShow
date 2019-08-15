@@ -7,16 +7,14 @@ import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.UnsupportedEncodingException;
 import java.time.Instant;
 import java.util.Date;
 import java.util.Map;
-
-import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 @RestController
 public class DynamicJWTController extends BaseController {
@@ -27,7 +25,7 @@ public class DynamicJWTController extends BaseController {
         this.secretService = secretService;
     }
 
-    @RequestMapping(value = "/dynamic-builder-general", method = POST)
+    @PostMapping("/dynamic-builder-general")
     public JwtResponse dynamicBuilderGeneric(@RequestBody Map<String, Object> claims) throws UnsupportedEncodingException {
         String jws =  Jwts.builder()
             .setClaims(claims)
@@ -39,7 +37,7 @@ public class DynamicJWTController extends BaseController {
         return new JwtResponse(jws);
     }
 
-    @RequestMapping(value = "/dynamic-builder-compress", method = POST)
+    @PostMapping("/dynamic-builder-compress")
     public JwtResponse dynamicBuildercompress(@RequestBody Map<String, Object> claims) throws UnsupportedEncodingException {
         String jws =  Jwts.builder()
             .setClaims(claims)
@@ -52,7 +50,7 @@ public class DynamicJWTController extends BaseController {
         return new JwtResponse(jws);
     }
 
-    @RequestMapping(value = "/dynamic-builder-specific", method = POST)
+    @PostMapping("/dynamic-builder-specific")
     public JwtResponse dynamicBuilderSpecific(@RequestBody Map<String, Object> claims) throws UnsupportedEncodingException {
         JwtBuilder builder = Jwts.builder();
 

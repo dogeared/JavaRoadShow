@@ -6,15 +6,13 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.UnsupportedEncodingException;
 import java.time.Instant;
 import java.util.Date;
-
-import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 @RestController
 public class StaticJWTController extends BaseController {
@@ -25,7 +23,7 @@ public class StaticJWTController extends BaseController {
         this.secretService = secretService;
     }
 
-    @RequestMapping(value = "/static-builder", method = GET)
+    @GetMapping("/static-builder")
     public JwtResponse fixedBuilder() throws UnsupportedEncodingException {
         String jws = Jwts.builder()
             .setIssuer("Stormpath")
@@ -43,7 +41,7 @@ public class StaticJWTController extends BaseController {
         return new JwtResponse(jws);
     }
 
-    @RequestMapping(value = "/parser", method = GET)
+    @GetMapping("/parser")
     public JwtResponse parser(@RequestParam String jwt) throws UnsupportedEncodingException {
 
         Jws<Claims> jws = Jwts.parser()
@@ -53,7 +51,7 @@ public class StaticJWTController extends BaseController {
         return new JwtResponse(jws);
     }
 
-    @RequestMapping(value = "/parser-enforce", method = GET)
+    @GetMapping("/parser-enforce")
     public JwtResponse parserEnforce(@RequestParam String jwt) throws UnsupportedEncodingException {
         Jws<Claims> jws = Jwts.parser()
             .requireIssuer("Stormpath")
