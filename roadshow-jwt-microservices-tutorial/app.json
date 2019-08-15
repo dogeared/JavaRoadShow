@@ -1,7 +1,7 @@
 {
   "name": "JJWT Secure Microservices",
   "description": "Secure communication amongst microservices with JWTs",
-  "repository": "https://github.com/stormpath/stormpath-jjwt-microservices-tutorial/tree/master",
+  "repository": "https://github.com/dogeared/JavaRoadShow/tree/master/roadshow-jwt-microservices-tutorial",
   "keywords": ["spring boot", "identity", "security", "authentication"],
   "success_url": "/get-my-public-creds"
 }
