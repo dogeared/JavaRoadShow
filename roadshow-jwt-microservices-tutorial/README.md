@@ -43,11 +43,6 @@ target/*.jar --server.port=8081 &
 
 This will run one instance on port `8080` and one on `8081` and they will both be put in the background.
 
-You can also use the purple Heroku button below to deploy to your own Heroku account. Setup two different instances
-so you can communicate between them.
-
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
-
 ## Service Registry
 
 Note: all service to service communication examples below use [httpie](https://github.com/jkbrzt/httpie)

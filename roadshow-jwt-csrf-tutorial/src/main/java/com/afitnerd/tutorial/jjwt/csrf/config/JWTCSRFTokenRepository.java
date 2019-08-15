@@ -50,8 +50,7 @@ public class JWTCSRFTokenRepository implements CsrfTokenRepository {
             if (session != null) {
                 session.removeAttribute(DEFAULT_CSRF_TOKEN_ATTR_NAME);
             }
-        }
-        else {
+        } else {
             HttpSession session = request.getSession();
             session.setAttribute(DEFAULT_CSRF_TOKEN_ATTR_NAME, token);
         }
@@ -60,7 +59,7 @@ public class JWTCSRFTokenRepository implements CsrfTokenRepository {
     @Override
     public CsrfToken loadToken(HttpServletRequest request) {
         HttpSession session = request.getSession(false);
-        if (session == null || "GET".equals(request.getMethod())) {
+        if (session == null) {
             return null;
         }
         return (CsrfToken) session.getAttribute(DEFAULT_CSRF_TOKEN_ATTR_NAME);
